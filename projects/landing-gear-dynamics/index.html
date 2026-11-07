@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Landing Gear Dynamics | Aditya Kashyap</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/style.css">
+</head><body>
+<canvas id="bg"></canvas>
+<div class="w">
+ <header class="name"><b>LANDING <em>GEAR</em> DYNAMICS</b><a class="m" href="../../index.html">← Portfolio</a></header>
+ <div class="hero" style="min-height:auto;padding:40px 0 10px">
+  <span class="m">// Python · NumPy · SciPy · Matplotlib</span>
+  <h1 style="font-size:clamp(1.9rem,5vw,3.2rem)">Designing a main-gear strut for <em>off-design landings</em>.</h1>
+  <p class="lead">A 1-DOF oleo-pneumatic main-gear model comparing three strut designs at the design landing and under off-design and Monte Carlo conditions.</p>
+ </div>
+
+ <section><h2>Results (live from results.json)</h2>
+  <div class="sec" style="background:rgba(23,23,26,.72)">
+   <p class="m" id="gen">Loading results…</p>
+   <div class="st" id="nominal"></div>
+   <div class="tw"><table id="mc"><tr><th>Design</th><th>Mean peak force (kN)</th><th>95th-percentile peak force (kN)</th><th>Bottoming-out probability (%)</th></tr></table></div>
+   <div class="tw"><table id="scen"><tr><th>Scenario</th><th>A: fixed orifice</th><th>B: metering pin</th><th>C: pin + longer gas column</th></tr></table></div>
+   <div class="two"><div><h4>Verification checks</h4><ul class="cl" id="checks"></ul></div>
+   <div><h4>Files generated</h4><ul class="cl" id="files"></ul></div></div>
+  </div>
+ </section>
+
+ <section><h2>Problem statement and objectives</h2><div class="sec" style="background:rgba(23,23,26,.72)">
+  <p>Design the main-landing-gear strut of a transport aircraft that absorbs touchdown energy with low peak load without bottoming out — not just at the design landing, but across the off-design envelope (harder sink speeds, low lift, low gas charge, extra mass).</p>
+  <h4>Objectives</h4><ul class="cl">
+   <li>Model the oleo-pneumatic strut as a 1-DOF system: nonlinear gas spring, quadratic orifice damping, hard stop.</li>
+   <li>Compare three candidate designs at the design landing (3.0 m/s).</li>
+   <li>Stress-test the designs under off-design scenarios and a 120-case Monte Carlo study.</li>
+   <li>Select a robust design, not merely the lowest-load design at one operating point.</li>
+  </ul></div></section>
+
+ <section><h2>Physics, model and assumptions</h2><div class="sec" style="background:rgba(23,23,26,.72)">
+  <p><b>Equation of motion:</b> m·s̈ = m·g·(1 − lift) − F<sub>strut</sub>, where s is strut compression (down positive), m the mass per gear, lift the lift-to-weight ratio, and F<sub>strut</sub> the total strut force.</p>
+  <p><b>Strut force:</b> a nonlinear gas spring F<sub>a</sub> = F<sub>0</sub>·(h<sub>0</sub>/h<sub>0</sub>−s)<sup>n</sup> (n = 1.35, F<sub>0</sub> = 20 kN, h<sub>0</sub> = 0.40 m base) plus quadratic orifice damping F<sub>d</sub> = c(s)·v·|v| (with weaker rebound damping, factor 0.30) plus a stiff hard stop (K = 5 MN/m) beyond the 0.35 m stroke.</p>
+  <h4>Designs</h4><ul class="cl">
+   <li><b>A:</b> fixed orifice (best constant c found by sweep).</li>
+   <li><b>B:</b> metering pin — damping coefficient varies with stroke.</li>
+   <li><b>C:</b> metering pin plus a longer gas column (h<sub>0</sub> = 0.50 m, softer spring).</li>
+  </ul>
+  <h4>Assumptions</h4><ul class="cl">
+   <li>One degree of freedom; no tyre or unsprung wheel mass; lift constant during compression.</li>
+   <li>No friction, thermal, or aerodynamic effects; rebound damping simplified.</li>
+   <li>Parameters are illustrative and not validated against drop-test data.</li>
+  </ul></div></section>
+
+ <section><h2>Methodology</h2><div class="sec" style="background:rgba(23,23,26,.72)"><ul class="cl">
+  <li>Solved the ODE with <code>solve_ivp</code> (1 ms output steps, rtol 1e-7, atol 1e-9) until the stroke rebounds (terminal event).</li>
+  <li>Swept the fixed-orifice coefficient (0–30,000 N·s²/m²) and selected the lowest peak force that stays within stroke → design A.</li>
+  <li>Simulated the three designs at the design landing; computed peak force, peak stroke, utilisation, stroke margin, shape index, rebound speed, and bottoming-out flag.</li>
+  <li>Verified the model: energy-balance error at max compression, and static compression by closed form vs numerical root.</li>
+  <li>Reran all designs for 12 off-design scenarios (sink speeds 1.5–4.3 m/s, lift 67%, gas charge −20%/−40%, mass +15%).</li>
+  <li>Ran a 120-case Monte Carlo study over sink speed (1.5–3.7 m/s), lift (67–100%), mass (±250 kg), gas charge (70–105%).</li>
+  <li>Saved every output into <code>results/</code>: three plots, an animation GIF, <code>scenario_results.csv</code>, and <code>results.json</code> — metrics are computed by running <code>landing_gear.py</code>, never hard-coded.</li>
+ </ul></div></section>
+
+ <section><h2>Observed simulation results</h2><div class="sec" style="background:rgba(23,23,26,.72)">
+  <p>The results are rendered dynamically above from <code>results/results.json</code>. In summary: at the design landing, design C carries the lowest peak load, but under off-design and Monte Carlo conditions it spends its stroke margin and bottoms out, while design B stays within stroke everywhere and design A carries higher loads but also stays within stroke.</p>
+  <div class="media">
+   <figure><img src="results/landing_gear_animation.gif" alt="Animation of three landing gear designs at touchdown"><figcaption>Three designs at touchdown (slowed about 8x)</figcaption></figure>
+   <figure><img src="results/3_robustness.png" alt="Robustness study"><figcaption>Peak force, stroke margin and Monte Carlo</figcaption></figure>
+   <figure><img src="results/1_design_comparison.png" alt="Design comparison"><figcaption>Force vs stroke, load vs time, damping profile</figcaption></figure>
+   <figure><img src="results/2_energy_accounting.png" alt="Energy accounting"><figcaption>Energy accounting and force components</figcaption></figure>
+  </div></div></section>
+
+ <section><h2>Conclusions and limitations</h2><div class="sec" style="background:rgba(23,23,26,.72)"><div class="two">
+  <div><h4>Conclusions</h4><ul class="cl"><li>A metering pin and a softer gas spring both reduce peak load, but the softer spring spends stroke margin.</li><li>Design C has the lowest load at the design point, yet bottoms out in a meaningful share of random landings; design B is the robust choice.</li><li>Judging designs at a single operating point can select the wrong design.</li></ul></div>
+  <div><h4>Limitations</h4><ul class="cl"><li>Parameters are illustrative and not validated against drop-test data.</li><li>One degree of freedom: no tyre or wheel mass, constant lift, no friction or thermal effects.</li><li>Rebound is simplified, so the model rebounds at about 2 m/s.</li></ul></div></div>
+  <div style="margin-top:14px"><a class="btn f" href="results/landing_gear_animation.gif">Open animation GIF</a> <a class="btn" href="results/results.json">View results.json</a> <a class="btn" href="landing_gear.py">View source</a> <a class="btn" href="../../index.html">Back to portfolio</a></div>
+ </div></section>
+</div>
+<footer><span class="m">© <span id="y"></span> Aditya Kashyap · Landing Gear Dynamics</span></footer>
+<script>
+(function(){
+  var names = ["A: fixed orifice (c=8000)", "B: metering pin", "C: pin + longer gas column"];
+  function fill(json){
+    var n = json.nominal, out = "", k;
+    for (var i = 0; i < names.length; i++) {
+      k = names[i]; var m = n[k];
+      out += "<div><b>" + m.F_peak_kN.toFixed(1) + " kN</b><span class='m'>peak force · " + k.split(":")[0] + " design</span><br>" +
+             "<span class='m'>" + m.utilisation_pct.toFixed(1) + "% of stroke · " + m.margin_mm.toFixed(0) + " mm margin</span></div>";
+    }
+    document.getElementById("nominal").innerHTML = out;
+    var mc = "", t = document.getElementById("mc");
+    for (var j = 0; j < names.length; j++) {
+      k = names[j]; var s = json.monte_carlo[k];
+      mc += "<tr><td>" + k + "</td><td>" + s.mean_kN.toFixed(1) + "</td><td>" + s.p95_kN.toFixed(1) + "</td><td>" + s.prob_bottom_pct.toFixed(1) + "%</td></tr>";
+    }
+    t.insertAdjacentHTML("beforeend", mc);
+    var sc = "", labels = [], rows = json.scenarios;
+    for (var a = 0; a < rows.length; a++) { if (labels.indexOf(rows[a].scenario) < 0) labels.push(rows[a].scenario); }
+    for (var b = 0; b < labels.length; b++) {
+      sc += "<tr><td>" + labels[b] + "</td>";
+      for (var d = 0; d < names.length; d++) {
+        var r = rows.filter(function(x){ return x.scenario === labels[b] && x.design === names[d]; })[0];
+        sc += "<td>" + r.F_peak_kN.toFixed(1) + " (" + r.utilisation_pct.toFixed(1) + "%" + (r.bottomed ? ", bottomed)" : ")") + "</td>";
+      }
+      sc += "</tr>";
+    }
+    document.getElementById("scen").insertAdjacentHTML("beforeend", sc);
+    var c = json.checks;
+    document.getElementById("checks").innerHTML =
+      "<li>Energy balance error at max compression: " + c.energy_error_J.toFixed(3) + " J (" + c.energy_error_pct.toFixed(4) + "% of impact energy).</li>" +
+      "<li>Static compression: closed form " + c.static_closed_mm.toFixed(2) + " mm vs numerical root " + c.static_root_mm.toFixed(2) + " mm.</li>" +
+      "<li>Ideal flat force (KE / full stroke): " + json.ideal_flat_force_kN.toFixed(1) + " kN.</li>";
+    var f = "";
+    for (var g = 0; g < json.files.length; g++) f += "<li>" + json.files[g] + "</li>";
+    document.getElementById("files").innerHTML = f;
+    document.getElementById("gen").textContent = "Generated: " + json.generated_at + " · nominal at 3.0 m/s design landing";
+  }
+  document.getElementById("y").textContent = new Date().getFullYear();
+  fetch("results/results.json").then(function(r){ if (!r.ok) throw new Error("results.json not found — run landing_gear.py first"); return r.json(); }).then(fill).catch(function(e){
+    document.getElementById("gen").textContent = "Could not load results/results.json (" + e.message + ").";
+  });
+})();
+</script>
+</body></html>

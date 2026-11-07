@@ -1,0 +1,395 @@
+{
+  "nominal": {
+    "A: fixed orifice (c=8000)": {
+      "F_peak_kN": 92.0,
+      "s_peak_m": 0.26788445620760964,
+      "utilisation_pct": 76.53841605931704,
+      "margin_mm": 82.11554379239033,
+      "shape_index": 0.8216553463691463,
+      "rebound_mps": 2.009014876532381,
+      "bottomed": false
+    },
+    "B: metering pin": {
+      "F_peak_kN": 79.69273276159032,
+      "s_peak_m": 0.25634210380055406,
+      "utilisation_pct": 73.2406010858726,
+      "margin_mm": 93.65789619944593,
+      "shape_index": 0.9912572202954992,
+      "rebound_mps": 1.9003019515744783,
+      "bottomed": false
+    },
+    "C: pin + longer gas column": {
+      "F_peak_kN": 68.67384623858632,
+      "s_peak_m": 0.2995012029954323,
+      "utilisation_pct": 85.57177228440925,
+      "margin_mm": 50.49879700456766,
+      "shape_index": 0.9845438975521241,
+      "rebound_mps": 2.00735440718308,
+      "bottomed": false
+    }
+  },
+  "static_mm": {
+    "A: fixed orifice (c=8000)": 177.48711858664112,
+    "B: metering pin": 177.48711858664112,
+    "C: pin + longer gas column": 221.8588982333014
+  },
+  "checks": {
+    "energy_error_J": 0.3679962515925581,
+    "energy_error_pct": 0.0018172654399632498,
+    "static_closed_mm": 177.48711858664112,
+    "static_root_mm": 177.48711858664112
+  },
+  "monte_carlo": {
+    "A: fixed orifice (c=8000)": {
+      "mean_kN": 88.34705732118191,
+      "p95_kN": 147.91894941436377,
+      "prob_bottom_pct": 0.0
+    },
+    "B: metering pin": {
+      "mean_kN": 74.46384458222843,
+      "p95_kN": 111.94738525954999,
+      "prob_bottom_pct": 0.0
+    },
+    "C: pin + longer gas column": {
+      "mean_kN": 73.98240874384146,
+      "p95_kN": 152.72838484177873,
+      "prob_bottom_pct": 19.166666666666668
+    }
+  },
+  "ideal_flat_force_kN": 57.85714285714286,
+  "scenarios": [
+    {
+      "scenario": "sink 1.5 m/s",
+      "design": "A: fixed orifice (c=8000)",
+      "F_peak_kN": 38.0,
+      "s_peak_m": 0.1421193811883715,
+      "utilisation_pct": 40.60553748239186,
+      "margin_mm": 207.88061881162847,
+      "bottomed": false
+    },
+    {
+      "scenario": "sink 1.5 m/s",
+      "design": "B: metering pin",
+      "F_peak_kN": 36.30627773754255,
+      "s_peak_m": 0.14281602880302374,
+      "utilisation_pct": 40.80457965800679,
+      "margin_mm": 207.18397119697624,
+      "bottomed": false
+    },
+    {
+      "scenario": "sink 1.5 m/s",
+      "design": "C: pin + longer gas column",
+      "F_peak_kN": 33.07503010442617,
+      "s_peak_m": 0.15553855867522923,
+      "utilisation_pct": 44.43958819292264,
+      "margin_mm": 194.46144132477076,
+      "bottomed": false
+    },
+    {
+      "scenario": "sink 2.0 m/s",
+      "design": "A: fixed orifice (c=8000)",
+      "F_peak_kN": 52.0,
+      "s_peak_m": 0.19349695952911677,
+      "utilisation_pct": 55.28484557974765,
+      "margin_mm": 156.5030404708832,
+      "bottomed": false
+    },
+    {
+      "scenario": "sink 2.0 m/s",
+      "design": "B: metering pin",
+      "F_peak_kN": 48.13932268665388,
+      "s_peak_m": 0.19131576766853187,
+      "utilisation_pct": 54.66164790529482,
+      "margin_mm": 158.6842323314681,
+      "bottomed": false
+    },
+    {
+      "scenario": "sink 2.0 m/s",
+      "design": "C: pin + longer gas column",
+      "F_peak_kN": 42.57696056665637,
+      "s_peak_m": 0.21430605476385278,
+      "utilisation_pct": 61.2303013611008,
+      "margin_mm": 135.6939452361472,
+      "bottomed": false
+    },
+    {
+      "scenario": "sink 2.5 m/s",
+      "design": "A: fixed orifice (c=8000)",
+      "F_peak_kN": 70.0,
+      "s_peak_m": 0.23498503139735397,
+      "utilisation_pct": 67.13858039924399,
+      "margin_mm": 115.01496860264601,
+      "bottomed": false
+    },
+    {
+      "scenario": "sink 2.5 m/s",
+      "design": "B: metering pin",
+      "F_peak_kN": 62.65512347941586,
+      "s_peak_m": 0.2283250413621714,
+      "utilisation_pct": 65.23572610347756,
+      "margin_mm": 121.67495863782857,
+      "bottomed": false
+    },
+    {
+      "scenario": "sink 2.5 m/s",
+      "design": "C: pin + longer gas column",
+      "F_peak_kN": 54.355427647269515,
+      "s_peak_m": 0.2615863200516367,
+      "utilisation_pct": 74.7389485861819,
+      "margin_mm": 88.4136799483633,
+      "bottomed": false
+    },
+    {
+      "scenario": "sink 3.0 m/s",
+      "design": "A: fixed orifice (c=8000)",
+      "F_peak_kN": 92.0,
+      "s_peak_m": 0.26788445620760964,
+      "utilisation_pct": 76.53841605931704,
+      "margin_mm": 82.11554379239033,
+      "bottomed": false
+    },
+    {
+      "scenario": "sink 3.0 m/s",
+      "design": "B: metering pin",
+      "F_peak_kN": 79.69273276159032,
+      "s_peak_m": 0.25634210380055406,
+      "utilisation_pct": 73.2406010858726,
+      "margin_mm": 93.65789619944593,
+      "bottomed": false
+    },
+    {
+      "scenario": "sink 3.0 m/s",
+      "design": "C: pin + longer gas column",
+      "F_peak_kN": 68.67384623858632,
+      "s_peak_m": 0.2995012029954323,
+      "utilisation_pct": 85.57177228440925,
+      "margin_mm": 50.49879700456766,
+      "bottomed": false
+    },
+    {
+      "scenario": "sink 3.4 m/s",
+      "design": "A: fixed orifice (c=8000)",
+      "F_peak_kN": 113.11305818002461,
+      "s_peak_m": 0.28916768908872525,
+      "utilisation_pct": 82.61933973963579,
+      "margin_mm": 60.832310911274725,
+      "bottomed": false
+    },
+    {
+      "scenario": "sink 3.4 m/s",
+      "design": "B: metering pin",
+      "F_peak_kN": 96.57223182932661,
+      "s_peak_m": 0.27400335738012627,
+      "utilisation_pct": 78.28667353717893,
+      "margin_mm": 75.99664261987371,
+      "bottomed": false
+    },
+    {
+      "scenario": "sink 3.4 m/s",
+      "design": "C: pin + longer gas column",
+      "F_peak_kN": 82.43851635471971,
+      "s_peak_m": 0.32455402459832994,
+      "utilisation_pct": 92.72972131380857,
+      "margin_mm": 25.44597540167004,
+      "bottomed": false
+    },
+    {
+      "scenario": "sink 3.7 m/s",
+      "design": "A: fixed orifice (c=8000)",
+      "F_peak_kN": 134.87554622629975,
+      "s_peak_m": 0.30271245298823934,
+      "utilisation_pct": 86.48927228235411,
+      "margin_mm": 47.28754701176064,
+      "bottomed": false
+    },
+    {
+      "scenario": "sink 3.7 m/s",
+      "design": "B: metering pin",
+      "F_peak_kN": 110.61905456998431,
+      "s_peak_m": 0.2851567643995643,
+      "utilisation_pct": 81.47336125701838,
+      "margin_mm": 64.8432356004357,
+      "bottomed": false
+    },
+    {
+      "scenario": "sink 3.7 m/s",
+      "design": "C: pin + longer gas column",
+      "F_peak_kN": 93.89262512814767,
+      "s_peak_m": 0.34085563194551277,
+      "utilisation_pct": 97.38732341300366,
+      "margin_mm": 9.144368054487206,
+      "bottomed": false
+    },
+    {
+      "scenario": "sink 4.0 m/s",
+      "design": "A: fixed orifice (c=8000)",
+      "F_peak_kN": 160.56593092272755,
+      "s_peak_m": 0.3144990787791335,
+      "utilisation_pct": 89.85687965118102,
+      "margin_mm": 35.50092122086645,
+      "bottomed": false
+    },
+    {
+      "scenario": "sink 4.0 m/s",
+      "design": "B: metering pin",
+      "F_peak_kN": 125.8545443734554,
+      "s_peak_m": 0.2948822331491642,
+      "utilisation_pct": 84.25206661404691,
+      "margin_mm": 55.11776685083581,
+      "bottomed": false
+    },
+    {
+      "scenario": "sink 4.0 m/s",
+      "design": "C: pin + longer gas column",
+      "F_peak_kN": 130.2925372754737,
+      "s_peak_m": 0.3548209510512971,
+      "utilisation_pct": 101.37741458608488,
+      "margin_mm": -4.8209510512970954,
+      "bottomed": true
+    },
+    {
+      "scenario": "sink 4.3 m/s",
+      "design": "A: fixed orifice (c=8000)",
+      "F_peak_kN": 190.85344604288878,
+      "s_peak_m": 0.3247720772347864,
+      "utilisation_pct": 92.79202206708185,
+      "margin_mm": 25.227922765213574,
+      "bottomed": false
+    },
+    {
+      "scenario": "sink 4.3 m/s",
+      "design": "B: metering pin",
+      "F_peak_kN": 142.27798968676194,
+      "s_peak_m": 0.30342778742498555,
+      "utilisation_pct": 86.69365354999589,
+      "margin_mm": 46.572212575014426,
+      "bottomed": false
+    },
+    {
+      "scenario": "sink 4.3 m/s",
+      "design": "C: pin + longer gas column",
+      "F_peak_kN": 187.18478460079695,
+      "s_peak_m": 0.3641968301003806,
+      "utilisation_pct": 104.05623717153733,
+      "margin_mm": -14.196830100380641,
+      "bottomed": true
+    },
+    {
+      "scenario": "lift 67%",
+      "design": "A: fixed orifice (c=8000)",
+      "F_peak_kN": 121.1908141548748,
+      "s_peak_m": 0.2946887654367341,
+      "utilisation_pct": 84.19679012478117,
+      "margin_mm": 55.31123456326586,
+      "bottomed": false
+    },
+    {
+      "scenario": "lift 67%",
+      "design": "B: metering pin",
+      "F_peak_kN": 100.93227317649868,
+      "s_peak_m": 0.27940737710457525,
+      "utilisation_pct": 79.8306791727358,
+      "margin_mm": 70.59262289542473,
+      "bottomed": false
+    },
+    {
+      "scenario": "lift 67%",
+      "design": "C: pin + longer gas column",
+      "F_peak_kN": 90.06563151802351,
+      "s_peak_m": 0.3359885757859985,
+      "utilisation_pct": 95.99673593885672,
+      "margin_mm": 14.011424214001478,
+      "bottomed": false
+    },
+    {
+      "scenario": "gas charge -20%",
+      "design": "A: fixed orifice (c=8000)",
+      "F_peak_kN": 88.07473518988706,
+      "s_peak_m": 0.2869240783738135,
+      "utilisation_pct": 81.97830810680387,
+      "margin_mm": 63.07592162618647,
+      "bottomed": false
+    },
+    {
+      "scenario": "gas charge -20%",
+      "design": "B: metering pin",
+      "F_peak_kN": 75.62211170883674,
+      "s_peak_m": 0.27215144329753516,
+      "utilisation_pct": 77.75755522786719,
+      "margin_mm": 77.84855670246482,
+      "bottomed": false
+    },
+    {
+      "scenario": "gas charge -20%",
+      "design": "C: pin + longer gas column",
+      "F_peak_kN": 64.61702537509971,
+      "s_peak_m": 0.3218835407525663,
+      "utilisation_pct": 91.96672592930467,
+      "margin_mm": 28.116459247433667,
+      "bottomed": false
+    },
+    {
+      "scenario": "gas charge -40%",
+      "design": "A: fixed orifice (c=8000)",
+      "F_peak_kN": 89.50317952896592,
+      "s_peak_m": 0.3097084021322571,
+      "utilisation_pct": 88.4881148949306,
+      "margin_mm": 40.29159786774289,
+      "bottomed": false
+    },
+    {
+      "scenario": "gas charge -40%",
+      "design": "B: metering pin",
+      "F_peak_kN": 71.55540447047521,
+      "s_peak_m": 0.29092147346069813,
+      "utilisation_pct": 83.1204209887709,
+      "margin_mm": 59.07852653930185,
+      "bottomed": false
+    },
+    {
+      "scenario": "gas charge -40%",
+      "design": "C: pin + longer gas column",
+      "F_peak_kN": 60.648885006288744,
+      "s_peak_m": 0.3494246334113775,
+      "utilisation_pct": 99.83560954610788,
+      "margin_mm": 0.5753665886224502,
+      "bottomed": false
+    },
+    {
+      "scenario": "mass +15%",
+      "design": "A: fixed orifice (c=8000)",
+      "F_peak_kN": 111.29185140330094,
+      "s_peak_m": 0.2878274175152586,
+      "utilisation_pct": 82.2364050043596,
+      "margin_mm": 62.17258248474139,
+      "bottomed": false
+    },
+    {
+      "scenario": "mass +15%",
+      "design": "B: metering pin",
+      "F_peak_kN": 95.55821982330163,
+      "s_peak_m": 0.27441932372984035,
+      "utilisation_pct": 78.40552106566868,
+      "margin_mm": 75.58067627015963,
+      "bottomed": false
+    },
+    {
+      "scenario": "mass +15%",
+      "design": "C: pin + longer gas column",
+      "F_peak_kN": 81.56265383966878,
+      "s_peak_m": 0.3234870356959731,
+      "utilisation_pct": 92.42486734170662,
+      "margin_mm": 26.512964304026887,
+      "bottomed": false
+    }
+  ],
+  "generated_at": "2026-11-07T20:53:45.598301+05:30",
+  "files": [
+    "1_design_comparison.png",
+    "2_energy_accounting.png",
+    "3_robustness.png",
+    "landing_gear_animation.gif",
+    "scenario_results.csv",
+    "results.json"
+  ]
+}
